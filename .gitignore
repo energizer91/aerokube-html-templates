@@ -1,0 +1,7 @@
+.idea
+node_modules
+storybook-static
+dist
+styles/material
+!styles/material/*.min.css
+!styles/material/*.min.js
