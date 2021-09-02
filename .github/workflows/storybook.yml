@@ -20,3 +20,10 @@ jobs:
           FOLDER: docs-build # The folder that the build-storybook script generates files.
           CLEAN: true # Automatically remove deleted files from the deploy branch
           TARGET_FOLDER: docs # The folder that we serve our Storybook files from
+      - name: Create HTML assets
+        run: npm run build
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: html-files
+          path: dist
