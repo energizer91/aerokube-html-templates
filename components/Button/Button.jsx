@@ -1,23 +1,30 @@
 import React from "react";
+import { MDCRipple } from "@material/ripple";
 import cn from "../../helpers/classnames";
 
 const Button = ({
   colored = false,
-  raised = false,
-  outline = false,
+  outlined = false,
+  unelevated = false,
   icon,
   children,
 }) => {
   const root = cn("button");
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
+    new MDCRipple(ref.current);
+  });
 
   return (
-    <button
-      className={root({ colored, raised, outline, icon }, [
-        "mdl-js-button",
-        "mdl-js-ripple-effect",
-      ])}
-    >
-      {icon ? <i className="material-icons">{children}</i> : children}
+    <button ref={ref} className={root({ colored, outlined, icon, unelevated })}>
+      <span className={root("ripple")} />
+      {!!icon && <i className={root("icon", ["material-icons"])}>{icon}</i>}
+      {children}
     </button>
   );
 };

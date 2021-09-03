@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "../../helpers/classnames";
+import { MDCTextField } from "@material/textfield";
 
 const TextField = ({
   id = "textfield",
@@ -8,31 +9,41 @@ const TextField = ({
   value,
   placeholder,
   error,
+  icon,
 }) => {
-  const root = cn("textfield");
+  const root = cn("text-field");
+  const outline = cn("notched-outline");
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    if (ref.current) {
+      new MDCTextField(ref.current);
+    }
+  }, [ref]);
 
   return (
-    <div className={root({ dark }, ["mdl-js-textfield"])}>
+    <>
       {label && (
-        <label className={root("label")} htmlFor={id}>
-          {label}
-        </label>
+        <div className={root("label")}>
+          <label htmlFor={id}>{label}</label>
+        </div>
       )}
-      <div className={root("icon-wrapper")}>
-        {dark && (
-          <svg
-            className={root("icon")}
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+      <div
+        ref={ref}
+        className={root({ dark, outlined: true, "no-label": true })}
+      >
+        <span className={outline()}>
+          <span className={outline("leading")} />
+          <span className={outline("trailing")} />
+        </span>
+        {icon && (
+          <i
+            className={root("icon", { leading: true }, ["material-icons"])}
+            tabIndex="0"
+            role="button"
           >
-            <path
-              d="M12.5 11H11.71L11.43 10.73C12.41 9.59 13 8.11 13 6.5C13 2.91 10.09 0 6.5 0C2.91 0 0 2.91 0 6.5C0 10.09 2.91 13 6.5 13C8.11 13 9.59 12.41 10.73 11.43L11 11.71V12.5L16 17.49L17.49 16L12.5 11ZM6.5 11C4.01 11 2 8.99 2 6.5C2 4.01 4.01 2 6.5 2C8.99 2 11 4.01 11 6.5C11 8.99 8.99 11 6.5 11Z"
-              fill="currentColor"
-            />
-          </svg>
+            {icon}
+          </i>
         )}
         <input
           className={root("input")}
@@ -41,9 +52,18 @@ const TextField = ({
           defaultValue={value}
           placeholder={placeholder}
         />
-        {error && <span className={root("error")}>{error}</span>}
       </div>
-    </div>
+      {error && (
+        <div className="mdc-text-field-helper-line">
+          <div
+            className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+            aria-hidden="true"
+          >
+            {error}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

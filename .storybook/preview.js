@@ -1,9 +1,5 @@
-import "../styles/material/material.min.css";
-import "../styles/material/material-grid.min.css";
-import "../styles/main.css";
-import "../styles/bootstrap-grid.min.css";
-import "../styles/material/material.min";
-import { upgradeDomDecorator } from "../helpers/upgradeDomDecorator";
+import "material-components-web/index.scss";
+import "../styles/main.scss";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -14,5 +10,3 @@ export const parameters = {
     },
   },
 };
-
-export const decorators = [upgradeDomDecorator];

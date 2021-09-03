@@ -1,0 +1,31 @@
+$mdc-text-field-height: 40px;
+$mdc-text-field-leading-icon-padding-left: 0px !default;
+$mdc-text-field-leading-icon-padding-right: 20px !default;
+$mdc-text-field-helper-line-padding: 0 !default;
+$mdc-text-field-outlined-idle-border: rgb(192, 192, 192) !default;
+$mdc-text-field-outlined-hover-border: rgba(0, 0, 0, 0.6) !default;
+
+@import "~@material/textfield/mdc-text-field";
+
+.mdc-text-field__label {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.mdc-text-field {
+
+  &--dark {
+    @include mdc-text-field-ink-color(rgba(255, 255, 255, 0.74));
+    @include mdc-text-field-placeholder-color(rgba(255, 255, 255, 0.74));
+    @include mdc-text-field-leading-icon-color(rgba(255, 255, 255, 0.74));
+    background-color: rgba(51, 51, 51, 1);
+    border-radius: 8px;
+
+    &.mdc-text-field--focused {
+      @include mdc-text-field-ink-color(white);
+      @include mdc-text-field-placeholder-color(white);
+      @include mdc-text-field-leading-icon-color(white);
+    }
+  }
+}

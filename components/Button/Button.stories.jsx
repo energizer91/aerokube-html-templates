@@ -9,12 +9,12 @@ export default {
         type: "boolean",
       },
     },
-    raised: {
+    unelevated: {
       controls: {
         type: "boolean",
       },
     },
-    outline: {
+    outlined: {
       controls: {
         type: "boolean",
       },
@@ -32,9 +32,9 @@ export default {
   },
   args: {
     colored: true,
-    raised: true,
-    outline: false,
-    icon: false,
+    unelevated: true,
+    outlined: false,
+    icon: "",
     children: "Button",
   },
   component: Button,
@@ -44,35 +44,22 @@ export const Default = (props) => <Button {...props} />;
 
 export const TextOnly = Default.bind({});
 TextOnly.args = {
-  colored: true,
-  raised: false,
+  colored: false,
+  unelevated: false,
 };
 
 export const Outline = Default.bind({});
 Outline.args = {
   colored: true,
-  raised: false,
-  outline: true,
+  unelevated: false,
+  outlined: true,
 };
 
 export const Icon = Default.bind({});
 Icon.args = {
   colored: false,
-  raised: false,
-  outline: true,
-  icon: true,
-  children: "favorite",
-};
-
-export const IconWithText = Default.bind({});
-IconWithText.args = {
-  colored: true,
-  raised: false,
-  outline: true,
-  children: (
-    <>
-      <i className="material-icons me-2">favorite</i>
-      <span>Like</span>
-    </>
-  ),
+  unelevated: false,
+  outlined: true,
+  icon: "favorite",
+  children: "Like",
 };

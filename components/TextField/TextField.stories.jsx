@@ -28,6 +28,11 @@ export default {
         type: "text",
       },
     },
+    icon: {
+      controls: {
+        type: "text",
+      },
+    },
     error: {
       controls: {
         type: "text",
@@ -40,6 +45,7 @@ export default {
     value: "Text",
     placeholder: "placeholder",
     id: "sample",
+    icon: "",
     error: "",
   },
   component: Textfield,
@@ -50,4 +56,6 @@ export const Default = (props) => <Textfield {...props} />;
 export const Dark = Default.bind({});
 Dark.args = {
   dark: true,
+  id: "dark",
+  icon: "search",
 };

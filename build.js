@@ -8,18 +8,47 @@ const writeFile = util.promisify(fs.writeFile);
 
 const components = [
   {
-    name: "Button",
+    name: "button",
     path: "components/Button/Button",
-    props: {
-      children: "{{ .Caption }}",
-    },
+    variants: [
+      {
+        name: "regular",
+        props: {
+          children: "{{ .Caption }}",
+        },
+      },
+    ],
   },
   {
-    name: "TextField",
+    name: "textfield",
     path: "components/TextField/TextField",
-    props: {
-      label: "{{ .Label }}",
-    },
+    variants: [
+      {
+        name: "regular",
+        props: {
+          label: "{{ .Label }}",
+        },
+      },
+      {
+        name: "dark",
+        props: {
+          dark: true,
+          label: "{{ .Label }}",
+        },
+      },
+    ],
+  },
+  {
+    name: "header",
+    path: "parts/Header/Header",
+    variants: [
+      {
+        name: "regular",
+        props: {
+          status: {},
+        },
+      },
+    ],
   },
 ];
 
@@ -54,13 +83,21 @@ Promise.all(
   components.map((component) => {
     const Component = require(path.resolve(__dirname, component.path + ".jsx"));
 
-    const markup = ReactDOMServer.renderToString(
-      <Component.default {...component.props} />
-    );
+    return Promise.all(
+      component.variants.map((variant) => {
+        const markup = ReactDOMServer.renderToString(
+          <Component.default {...variant.props} />
+        );
 
-    return writeFile(
-      path.resolve(__dirname, "dist", component.name + ".html"),
-      markup
+        return writeFile(
+          path.resolve(
+            __dirname,
+            "dist",
+            component.name + "-" + variant.name + ".html"
+          ),
+          markup
+        );
+      })
     );
   })
 ).catch(console.error);
