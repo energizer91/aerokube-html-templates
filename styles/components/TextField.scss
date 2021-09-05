@@ -24,10 +24,19 @@ $mdc-text-field-outlined-hover-border: rgba(0, 0, 0, 0.6) !default;
       background-color 175ms animation.$standard-curve-timing-function;
   }
 
+  & .mdc-notched-outline {
+    &__leading,
+    &__trailing {
+      transition: border-color 175ms animation.$standard-curve-timing-function;
+    }
+  }
+
   &--dark {
     @include mdc-text-field-ink-color(rgba(255, 255, 255, 0.74));
     @include mdc-text-field-placeholder-color(rgba(255, 255, 255, 0.74));
     @include mdc-text-field-leading-icon-color(rgba(255, 255, 255, 0.74));
+    @include mdc-text-field-outline-color(rgb(51, 51, 51));
+    @include mdc-text-field-hover-outline-color(white);
     background-color: rgb(51, 51, 51);
     border-radius: $mdc-shape-small-component-radius;
 

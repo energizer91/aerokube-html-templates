@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "../../helpers/classnames";
-import {MDCTabBar} from '@material/tab-bar';
+import { MDCTabBar } from "@material/tab-bar";
 
 const Tabs = ({ tabs = [], active: initialActive = 0, onChange }) => {
   const root = cn("tab-bar");
@@ -10,9 +10,12 @@ const Tabs = ({ tabs = [], active: initialActive = 0, onChange }) => {
 
   const ref = React.useRef(null);
   const [tabHandler, setTabHandler] = React.useState(null);
-  const changeHandler = React.useCallback((index) => () => {
-    onChange(tabs[index]);
-  }, [onChange]);
+  const changeHandler = React.useCallback(
+    (index) => () => {
+      onChange(tabs[index]);
+    },
+    [onChange]
+  );
 
   React.useEffect(() => {
     if (tabHandler) {
@@ -31,7 +34,7 @@ const Tabs = ({ tabs = [], active: initialActive = 0, onChange }) => {
       if (tabBar) {
         tabBar.destroy();
       }
-    }
+    };
   }, [ref, setTabHandler]);
 
   return (
@@ -40,15 +43,21 @@ const Tabs = ({ tabs = [], active: initialActive = 0, onChange }) => {
         <div className={scroller("scroll-area")}>
           <div className={scroller("scroll-content")}>
             {tabs.map((tab, index) => (
-              <button key={tab.id} className={tabRoot()} role="tab" aria-selected="true"
-                      onClick={changeHandler(index)} tabIndex={index}>
-              <span className={root("content")}>
-                <span className={root("text-label")}>{tab.name}</span>
-              </span>
+              <button
+                key={tab.id}
+                className={tabRoot()}
+                role="tab"
+                aria-selected="true"
+                onClick={changeHandler(index)}
+                tabIndex={index}
+              >
+                <span className={root("content")}>
+                  <span className={root("text-label")}>{tab.name}</span>
+                </span>
                 <span className={indicator()}>
-                <span className={indicator("content", { underline: true })} />
-              </span>
-                <span className={tabRoot('ripple')} />
+                  <span className={indicator("content", { underline: true })} />
+                </span>
+                <span className={tabRoot("ripple")} />
               </button>
             ))}
           </div>
