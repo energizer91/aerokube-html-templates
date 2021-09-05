@@ -18,6 +18,9 @@ export default {
         type: "number",
       },
     },
+    onChange: {
+      action: "changed",
+    },
   },
   args: {
     min: 0,

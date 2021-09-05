@@ -5,22 +5,31 @@ $mdc-text-field-helper-line-padding: 0 !default;
 $mdc-text-field-outlined-idle-border: rgb(192, 192, 192) !default;
 $mdc-text-field-outlined-hover-border: rgba(0, 0, 0, 0.6) !default;
 
+@use "~@material/animation";
+@use '~@material/theme/theme';
+
+@import "../theme";
 @import "~@material/textfield/mdc-text-field";
 
 .mdc-text-field__label {
-  color: rgba(0, 0, 0, 0.6);
+  color: GrayText;
   font-size: 12px;
   margin-bottom: 4px;
 }
 
 .mdc-text-field {
+  & &__input,
+  & &__icon {
+    transition: color 175ms animation.$standard-curve-timing-function,
+      background-color 175ms animation.$standard-curve-timing-function;
+  }
 
   &--dark {
     @include mdc-text-field-ink-color(rgba(255, 255, 255, 0.74));
     @include mdc-text-field-placeholder-color(rgba(255, 255, 255, 0.74));
     @include mdc-text-field-leading-icon-color(rgba(255, 255, 255, 0.74));
-    background-color: rgba(51, 51, 51, 1);
-    border-radius: 8px;
+    background-color: rgb(51, 51, 51);
+    border-radius: $mdc-shape-small-component-radius;
 
     &.mdc-text-field--focused {
       @include mdc-text-field-ink-color(white);

@@ -8,6 +8,7 @@ const Switch = ({
   checked = false,
   name = "switch",
   caption,
+  onClick,
 }) => {
   const root = cn("switch");
   const ref = React.useRef(null);
@@ -33,6 +34,7 @@ const Switch = ({
         role="switch"
         name={name}
         aria-checked={checked}
+        onClick={onClick}
       >
         <div className={root("track")} />
         <div className={root("handle-track")}>

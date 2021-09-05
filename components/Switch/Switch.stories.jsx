@@ -24,6 +24,9 @@ export default {
         type: "text",
       },
     },
+    onClick: {
+      action: "clicked",
+    },
   },
   args: {
     id: "checkbox",

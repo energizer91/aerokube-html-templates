@@ -2,7 +2,14 @@ import React from "react";
 import cn from "../../helpers/classnames";
 import { MDCSlider } from "@material/slider";
 
-const Slider = ({ min = 0, max = 100, value = 0, step = 1, name }) => {
+const Slider = ({
+  min = 0,
+  max = 100,
+  value = 0,
+  step = 1,
+  name,
+  onChange,
+}) => {
   const root = cn("slider");
   const ref = React.useRef(null);
 
@@ -21,10 +28,11 @@ const Slider = ({ min = 0, max = 100, value = 0, step = 1, name }) => {
         type="range"
         min={min}
         max={max}
-        defaultValue={value}
+        value={value}
         step={step}
         name={name}
         aria-label="Slider"
+        onChange={onChange}
       />
       <div className={root("track")}>
         <div className={root("track", { inactive: true })} />

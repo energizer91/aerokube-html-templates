@@ -29,6 +29,9 @@ export default {
         type: "text",
       },
     },
+    onChange: {
+      action: "changed",
+    },
   },
   args: {
     id: "radio",

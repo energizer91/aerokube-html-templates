@@ -1,4 +1,3 @@
-import "material-components-web/index.scss";
 import "../styles/main.scss";
 
 export const parameters = {

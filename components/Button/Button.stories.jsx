@@ -29,6 +29,9 @@ export default {
         type: "text",
       },
     },
+    onClick: {
+      action: "clicked",
+    },
   },
   args: {
     colored: true,

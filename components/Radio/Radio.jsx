@@ -8,6 +8,7 @@ const Radio = ({
   checked = "false",
   caption,
   name = "radio",
+  onChange,
 }) => {
   const root = cn("radio");
   const ref = React.useRef(null);
@@ -32,7 +33,8 @@ const Radio = ({
           type="radio"
           id={id}
           name={name}
-          defaultChecked={checked}
+          checked={checked}
+          onChange={onChange}
         />
         <div className={root("background")}>
           <div className={root("outer-circle")} />

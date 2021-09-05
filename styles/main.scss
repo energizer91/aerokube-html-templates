@@ -1,8 +1,4 @@
-$mdc-theme-primary: rgb(71, 196, 129);
-$mdc-theme-on-primary: white;
-$mdc-shape-small-component-radius: 8px;
-$mdc-typography-font-family: unquote("Inter, Roboto, Helvetica, sans-serif");
-
+@import "./theme";
 @import "./bootstrap-grid.min.css";
 @import "./components/Button";
 @import "./components/TextField";
@@ -12,59 +8,65 @@ $mdc-typography-font-family: unquote("Inter, Roboto, Helvetica, sans-serif");
 @import "~@material/radio/mdc-radio";
 @import "~@material/switch/styles";
 @import "~@material/slider/styles";
+@import "~@material/tab/mdc-tab";
+@import "~@material/tab-bar/mdc-tab-bar";
+@import "~@material/tab-scroller/mdc-tab-scroller";
+@import "~@material/tab-indicator/mdc-tab-indicator";
 
-html, body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .header {
-    background-color: rgba(0, 0, 0, 0.87);
-    color: white;
-    padding: 18px;
+  background-color: rgba(0, 0, 0, 0.87);
+  color: white;
+  padding: 18px;
 }
 
 .virtual-machine-list-item {
-    width: 100%;
-    padding: 16px;
-    background-color: white;
-    border-radius: 8px;
+  width: 100%;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
 }
 
 .header__avatar {
-    height: 30px;
-    width: 30px;
-    margin-right: 47px;
-    background-color: rgba(25, 174, 255, 1);
-    box-shadow: 0 0 12px 2px #19AEFF;
-    object-fit: cover;
+  height: 30px;
+  width: 30px;
+  margin-right: 47px;
+  background-color: rgba(25, 174, 255, 1);
+  box-shadow: 0 0 12px 2px #19aeff;
+  object-fit: cover;
 }
 
 .header__status {
-    margin-left: 40px;
+  margin-left: 40px;
 }
 
 .header__status-item {
-    padding: 0 16px;
-    border-right: 1px solid rgb(192, 192, 192);
+  padding: 0 16px;
+  border-right: 1px solid rgb(192, 192, 192);
 }
 
 .header__status-item:first-of-type {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .header__status-item:last-of-type {
-    padding-right: 0;
-    border-right: none;
+  padding-right: 0;
+  border-right: none;
 }
 
-.header__status-heading, .header__status-info {
-    margin: 0;
-    font-size: 14px;
-    line-height: 24px;
+.header__status-heading,
+.header__status-info {
+  margin: 0;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .header__status-heading {
-    opacity: 0.74;
+  opacity: 0.74;
 }

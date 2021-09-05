@@ -10,6 +10,7 @@ const TextField = ({
   placeholder,
   error,
   icon,
+  onChange,
 }) => {
   const root = cn("text-field");
   const outline = cn("notched-outline");
@@ -49,7 +50,8 @@ const TextField = ({
           className={root("input")}
           type="text"
           id={id}
-          defaultValue={value}
+          onChange={onChange}
+          value={value}
           placeholder={placeholder}
         />
       </div>

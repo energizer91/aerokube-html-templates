@@ -5,23 +5,26 @@ export default {
   argTypes: {
     tabs: {
       control: {
-        type: "array",
-      },
+        type: "array"
+      }
     },
     active: {
       control: {
-        type: "number",
-      },
+        type: "number"
+      }
     },
+    onChange: {
+      action: "changed"
+    }
   },
   args: {
     tabs: [
-      { id: "tab-1", name: "Tab 1", content: "Hi from Tab 1" },
-      { id: "tab-2", name: "Tab 2", content: "Hi from Tab 2" },
+      { id: "tab-1", name: "Tab 1" },
+      { id: "tab-2", name: "Tab 2" }
     ],
-    active: 0,
+    active: 0
   },
-  component: Tabs,
+  component: Tabs
 };
 
 export const Default = (props) => <Tabs {...props} />;

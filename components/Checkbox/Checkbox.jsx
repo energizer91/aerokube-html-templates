@@ -5,9 +5,10 @@ import { MDCFormField } from "@material/form-field";
 
 const Checkbox = ({
   id = "check",
-  checked = "false",
+  checked = false,
   name = "check",
   caption,
+  onChange,
 }) => {
   const root = cn("checkbox");
   const ref = React.useRef(null);
@@ -26,14 +27,15 @@ const Checkbox = ({
 
   return (
     <>
-      <div ref={field} className="mdc-form-field">
+      <div ref={field} className="mdc-form-field mdc-theme--primary-bg">
         <div ref={ref} className={root()}>
           <input
             type="checkbox"
-            className={root("native-control")}
+            className={root("native-control", [""])}
             id={id}
             name={name}
-            defaultChecked={checked}
+            checked={checked}
+            onChange={onChange}
           />
           <div className={root("background")}>
             <svg className={root("checkmark")} viewBox="0 0 24 24">
