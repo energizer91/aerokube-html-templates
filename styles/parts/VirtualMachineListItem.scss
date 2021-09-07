@@ -1,0 +1,7 @@
+@use "~@material/shape";
+
+.virtual-machine-list-item {
+  padding: 16px;
+  background-color: white;
+  border-radius: shape.$small-component-radius;
+}

@@ -2,7 +2,10 @@
 @import "./bootstrap-grid.min.css";
 @import "./components/Button";
 @import "./components/TextField";
+@import "./components/IconButton";
+@import "./parts/VirtualMachineListItem";
 
+@import "~@material/elevation/mdc-elevation";
 @import "~@material/form-field/mdc-form-field";
 @import "~@material/checkbox/mdc-checkbox";
 @import "~@material/radio/mdc-radio";
@@ -12,6 +15,7 @@
 @import "~@material/tab-bar/mdc-tab-bar";
 @import "~@material/tab-scroller/mdc-tab-scroller";
 @import "~@material/tab-indicator/mdc-tab-indicator";
+@import "~@material/icon-button/mdc-icon-button";
 
 html,
 body {
@@ -24,13 +28,6 @@ body {
   background-color: rgba(0, 0, 0, 0.87);
   color: white;
   padding: 18px;
-}
-
-.virtual-machine-list-item {
-  width: 100%;
-  padding: 16px;
-  background-color: white;
-  border-radius: 8px;
 }
 
 .header__avatar {

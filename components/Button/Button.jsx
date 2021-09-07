@@ -3,15 +3,16 @@ import { MDCRipple } from "@material/ripple";
 import cn from "../../helpers/classnames";
 
 const Button = ({
-  colored = false,
   outlined = false,
   unelevated = false,
+  disabled = false,
   icon,
   children,
   onClick,
 }) => {
   const root = cn("button");
   const ref = React.useRef(null);
+  const iconOnly = Boolean(!children && icon);
 
   React.useEffect(() => {
     if (!ref.current) {
@@ -23,8 +24,9 @@ const Button = ({
 
   return (
     <button
+      disabled={disabled}
       ref={ref}
-      className={root({ colored, outlined, icon, unelevated })}
+      className={root({ outlined, icon, unelevated, "icon-only": iconOnly })}
       onClick={onClick}
     >
       <span className={root("ripple")} />

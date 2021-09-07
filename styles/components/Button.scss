@@ -1,3 +1,4 @@
+@use "~@material/animation";
 @use "~@material/theme" with (
   $primary: $mdc-theme-primary,
   $on-primary: $mdc-theme-on-primary,
@@ -14,4 +15,27 @@
   $horizontal-padding: 16px,
 );
 
-@use "~@material/button/mdc-button";
+@use "~@material/button/button";
+@use "~@material/button/mixins";
+
+@include button.core-styles;
+
+.mdc-button {
+  &--icon-only {
+    padding: 0;
+
+    @include mixins.height(32px);
+    @include mixins.icon-color(
+      (
+        default: rgba(0, 0, 0, 0.6),
+        hover: $mdc-theme-primary,
+      )
+    );
+    min-width: 32px;
+
+    & .mdc-button__icon {
+      transition: animation.standard(color, 150ms);
+      margin: 0;
+    }
+  }
+}

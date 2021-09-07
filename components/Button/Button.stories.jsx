@@ -4,7 +4,7 @@ import React from "react";
 export default {
   title: "Components/Button",
   argTypes: {
-    colored: {
+    disabled: {
       controls: {
         type: "boolean",
       },
@@ -34,6 +34,7 @@ export default {
     },
   },
   args: {
+    disabled: false,
     colored: true,
     unelevated: true,
     outlined: false,
@@ -47,22 +48,32 @@ export const Default = (props) => <Button {...props} />;
 
 export const TextOnly = Default.bind({});
 TextOnly.args = {
-  colored: false,
   unelevated: false,
+};
+
+export const Disabled = Default.bind({});
+Disabled.args = {
+  disabled: true,
 };
 
 export const Outline = Default.bind({});
 Outline.args = {
-  colored: true,
   unelevated: false,
   outlined: true,
 };
 
 export const Icon = Default.bind({});
 Icon.args = {
-  colored: false,
   unelevated: false,
   outlined: true,
   icon: "favorite",
   children: "Like",
+};
+
+export const IconOnly = Default.bind({});
+IconOnly.args = {
+  unelevated: false,
+  outlined: true,
+  icon: "favorite",
+  children: null,
 };
