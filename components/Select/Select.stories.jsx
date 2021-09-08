@@ -8,16 +8,6 @@ export default {
         type: "text",
       },
     },
-    dark: {
-      controls: {
-        type: "boolean",
-      },
-    },
-    value: {
-      controls: {
-        type: "text",
-      },
-    },
     placeholder: {
       controls: {
         type: "text",
@@ -28,34 +18,40 @@ export default {
         type: "text",
       },
     },
-    icon: {
+    options: {
       controls: {
-        type: "text",
+        type: "array",
       },
     },
-    error: {
+    selected: {
       controls: {
-        type: "text",
+        type: "number",
       },
+    },
+    onChange: {
+      action: "changed",
     },
   },
   args: {
     label: "Label",
-    dark: false,
-    value: "Text",
-    placeholder: "placeholder",
     id: "sample",
-    icon: "",
-    error: "",
+    selected: 0,
+    options: [
+      {
+        value: "foo",
+        title: "Foo",
+      },
+      {
+        value: "bar",
+        title: "Bar",
+      },
+      {
+        value: "qux",
+        title: "Qux",
+      },
+    ],
   },
   component: Select,
 };
 
 export const Default = (props) => <Select {...props} />;
-
-export const Dark = Default.bind({});
-Dark.args = {
-  dark: true,
-  id: "dark",
-  icon: "search",
-};

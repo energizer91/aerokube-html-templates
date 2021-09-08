@@ -38,6 +38,9 @@ export default {
         type: "text",
       },
     },
+    onChange: {
+      action: "changed",
+    },
   },
   args: {
     label: "Label",

@@ -1,24 +1,26 @@
 import React from "react";
+import { MDCSelect } from "@material/select";
 import cn from "../../helpers/classnames";
-import { MDCTextField } from "@material/textfield";
 
 const TextField = ({
-  id = "textfield",
+  id = "select",
   label,
-  dark = false,
-  value,
-  placeholder,
-  error,
-  icon,
+  options = [],
+  selected = 0,
   onChange,
+  className = "",
 }) => {
-  const root = cn("text-field");
+  const root = cn("select");
   const outline = cn("notched-outline");
+  const list = cn("list");
+  const listItem = cn("list-item");
   const ref = React.useRef(null);
 
   React.useEffect(() => {
     if (ref.current) {
-      new MDCTextField(ref.current);
+      const select = new MDCSelect(ref.current);
+
+      select.listen("MDCSelect:change", onChange);
     }
   }, [ref]);
 
@@ -30,41 +32,66 @@ const TextField = ({
         </div>
       )}
       <div
+        id={id}
         ref={ref}
-        className={root({ dark, outlined: true, "no-label": true })}
-      >
-        <span className={outline()}>
-          <span className={outline("leading")} />
-          <span className={outline("trailing")} />
-        </span>
-        {icon && (
-          <i
-            className={root("icon", { leading: true }, ["material-icons"])}
-            tabIndex="0"
-            role="button"
-          >
-            {icon}
-          </i>
+        className={root(
+          { outlined: true, "no-label": true },
+          className.split(" ")
         )}
-        <input
-          className={root("input")}
-          type="text"
-          id={id}
-          onChange={onChange}
-          value={value}
-          placeholder={placeholder}
-        />
-      </div>
-      {error && (
-        <div className="mdc-text-field-helper-line">
-          <div
-            className="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
-            aria-hidden="true"
-          >
-            {error}
-          </div>
+      >
+        <div className={root("anchor")} aria-labelledby="outlined-select-label">
+          <span className={outline()}>
+            <span className={outline("leading")} />
+            <span className={outline("trailing")} />
+          </span>
+          <span className={root("selected-text-container")}>
+            <span id="demo-selected-text" className={root("selected-text")} />
+          </span>
+          <span className={root("dropdown-icon")}>
+            <svg
+              className={root("dropdown-icon-graphic")}
+              viewBox="7 10 10 5"
+              focusable="false"
+            >
+              <polygon
+                className={root("dropdown-icon-inactive")}
+                stroke="none"
+                fillRule="evenodd"
+                points="7 10 12 15 17 10"
+              />
+              <polygon
+                className={root("dropdown-icon-active")}
+                stroke="none"
+                fillRule="evenodd"
+                points="7 15 12 10 17 15"
+              />
+            </svg>
+          </span>
         </div>
-      )}
+
+        <div
+          className={root("menu", [
+            "mdc-menu",
+            "mdc-menu-surface",
+            "mdc-menu-surface--fullwidth",
+          ])}
+        >
+          <ul className={list()} role="listbox" aria-label={label}>
+            {options.map((o, i) => (
+              <li
+                key={o.value}
+                className={listItem({ selected: i === selected })}
+                aria-selected={i === selected}
+                data-value={o.value}
+                role="option"
+              >
+                <span className={listItem("ripple")} />
+                <span className={listItem("text")}>{o.title}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </>
   );
 };

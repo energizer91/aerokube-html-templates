@@ -1,0 +1,18 @@
+@use "../theme" as aerokube-theme;
+@use "~@material/select/variables" with (
+  $height: 40px,
+  $outlined-idle-border: aerokube-theme.$border-color,
+  $outlined-hover-border: aerokube-theme.$dark-icon-color,
+);
+@use "~@material/list/mdc-list";
+@use "~@material/menu-surface/mdc-menu-surface";
+@use "~@material/menu/mdc-menu";
+@use "~@material/select/styles";
+
+.mdc-select {
+  &__label {
+    color: GrayText;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+}

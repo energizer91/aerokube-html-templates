@@ -5,7 +5,7 @@ import { MDCRadio } from "@material/radio";
 
 const Radio = ({
   id = "radio",
-  checked = "false",
+  checked = false,
   caption,
   name = "radio",
   onChange,
@@ -26,8 +26,8 @@ const Radio = ({
   });
 
   return (
-    <div className="mdc-form-field">
-      <div className={root()}>
+    <div ref={field} className="mdc-form-field">
+      <div ref={ref} className={root()}>
         <input
           className={root("native-control")}
           type="radio"

@@ -3,6 +3,7 @@
 @import "./bootstrap-grid.min.css";
 @import "./components/Button";
 @import "./components/TextField";
+@import "./components/Select";
 @import "./components/IconButton";
 @import "./components/FormField";
 @import "./components/ChipSet";
@@ -72,4 +73,12 @@ body {
 
 .header__status-heading {
   opacity: 0.74;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mb-24 {
+  margin-bottom: 20px;
 }

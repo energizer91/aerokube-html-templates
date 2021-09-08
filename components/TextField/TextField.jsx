@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "../../helpers/classnames";
+import { MDCFormField } from "@material/form-field";
 import { MDCTextField } from "@material/textfield";
 
 const TextField = ({
@@ -11,19 +12,25 @@ const TextField = ({
   error,
   icon,
   onChange,
+  textarea = false,
+  className = "",
 }) => {
   const root = cn("text-field");
   const outline = cn("notched-outline");
   const ref = React.useRef(null);
+  const field = React.useRef(null);
 
   React.useEffect(() => {
-    if (ref.current) {
-      new MDCTextField(ref.current);
+    if (ref.current && field.current) {
+      const input = new MDCTextField(ref.current);
+      const formField = new MDCFormField(field.current);
+
+      formField.input = input;
     }
-  }, [ref]);
+  }, [ref, field]);
 
   return (
-    <>
+    <div ref={field}>
       {label && (
         <div className={root("label")}>
           <label htmlFor={id}>{label}</label>
@@ -31,7 +38,10 @@ const TextField = ({
       )}
       <div
         ref={ref}
-        className={root({ dark, outlined: true, "no-label": true })}
+        className={root(
+          { dark, outlined: true, "no-label": true, textarea },
+          className.split(" ")
+        )}
       >
         <span className={outline()}>
           <span className={outline("leading")} />
@@ -46,14 +56,24 @@ const TextField = ({
             {icon}
           </i>
         )}
-        <input
-          className={root("input")}
-          type="text"
-          id={id}
-          onChange={onChange}
-          value={value}
-          placeholder={placeholder}
-        />
+        {textarea ? (
+          <textarea
+            className={root("input")}
+            id={id}
+            onChange={onChange}
+            value={value}
+            placeholder={placeholder}
+          />
+        ) : (
+          <input
+            className={root("input")}
+            type="text"
+            id={id}
+            onChange={onChange}
+            value={value}
+            placeholder={placeholder}
+          />
+        )}
       </div>
       {error && (
         <div className="mdc-text-field-helper-line">
@@ -65,7 +85,7 @@ const TextField = ({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
