@@ -39,10 +39,9 @@ fs.mkdirSync(path.resolve(__dirname, "dist"));
 async function main() {
   const stories = await glob("./*(components|parts|views)/**/*.stories.jsx");
 
-  console.log("rendering", stories);
-
   return Promise.all(
     stories.map((story) => {
+      console.log("Rendering", story);
       const component = require(path.resolve(__dirname, story));
       const { default: options, ...variants } = component;
 
