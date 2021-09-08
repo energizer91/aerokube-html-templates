@@ -1,7 +1,11 @@
 import React from "react";
 
-const IconButton = ({ children }) => (
-  <span role="button" className="icon-button material-icons-outlined">
+const IconButton = ({ children, onClick }) => (
+  <span
+    role="button"
+    className="icon-button material-icons-outlined"
+    onClick={onClick}
+  >
     {children}
   </span>
 );

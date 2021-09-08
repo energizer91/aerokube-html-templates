@@ -15,7 +15,8 @@
 );
 
 @use "~@material/shape" with (
-  $small-component-radius: 8px
+  $small-component-radius: 8px,
+  $medium-component-radius: 8px
 );
 
 $dark-icon-color: rgba(0, 0, 0, 0.6);

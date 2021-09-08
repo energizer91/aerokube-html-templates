@@ -1,0 +1,16 @@
+@use "~@material/snackbar/variables" with (
+  $fill-color: white,
+  $label-ink-color: black
+);
+@use "~@material/snackbar/mixins";
+
+@include mixins.core-styles;
+
+.mdc-snackbar {
+  margin-bottom: 40px;
+  justify-content: flex-start;
+
+  &__label {
+    font-weight: 500;
+  }
+}

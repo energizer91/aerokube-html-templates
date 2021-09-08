@@ -9,6 +9,8 @@ const Button = ({
   icon,
   children,
   onClick,
+  className = "",
+  ...rest
 }) => {
   const root = cn("button");
   const ref = React.useRef(null);
@@ -24,10 +26,15 @@ const Button = ({
 
   return (
     <button
+      type="button"
       disabled={disabled}
       ref={ref}
-      className={root({ outlined, icon, unelevated, "icon-only": iconOnly })}
+      className={root(
+        { outlined, icon, unelevated, "icon-only": iconOnly },
+        className.split(" ")
+      )}
       onClick={onClick}
+      {...rest}
     >
       <span className={root("ripple")} />
       {!!icon && <i className={root("icon", ["material-icons"])}>{icon}</i>}

@@ -1,10 +1,13 @@
 @use "./theme";
+@use '~@material/typography';
 @import "./bootstrap-grid.min.css";
 @import "./components/Button";
 @import "./components/TextField";
 @import "./components/IconButton";
 @import "./components/FormField";
 @import "./components/ChipSet";
+@import "./components/Snackbar";
+@import "./components/Dialog";
 @import "./parts/VirtualMachineListItem";
 
 @import "~@material/elevation/mdc-elevation";
@@ -18,11 +21,13 @@
 @import "~@material/tab-indicator/mdc-tab-indicator";
 @import "~@material/icon-button/mdc-icon-button";
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Inter", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: typography.$font-family;
 }
 
 .header {

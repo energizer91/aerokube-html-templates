@@ -1,7 +1,7 @@
-import TextField from "./TextField";
+import Select from "./Select";
 
 export default {
-  title: "Components/TextField",
+  title: "Components/Select",
   argTypes: {
     label: {
       controls: {
@@ -48,10 +48,10 @@ export default {
     icon: "",
     error: "",
   },
-  component: TextField,
+  component: Select,
 };
 
-export const Default = (props) => <TextField {...props} />;
+export const Default = (props) => <Select {...props} />;
 
 export const Dark = Default.bind({});
 Dark.args = {
