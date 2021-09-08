@@ -35,7 +35,6 @@ export default {
   },
   args: {
     disabled: false,
-    colored: true,
     unelevated: true,
     outlined: false,
     icon: "",

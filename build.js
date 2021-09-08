@@ -1,56 +1,13 @@
+import "regenerator-runtime/runtime";
 import React from "react";
 import path from "path";
 import fs from "fs";
 import util from "util";
+import globCb from "glob";
 import ReactDOMServer from "react-dom/server";
 
 const writeFile = util.promisify(fs.writeFile);
-
-const components = [
-  {
-    name: "button",
-    path: "components/Button/Button",
-    variants: [
-      {
-        name: "regular",
-        props: {
-          children: "{{ .Caption }}",
-        },
-      },
-    ],
-  },
-  {
-    name: "textfield",
-    path: "components/TextField/TextField",
-    variants: [
-      {
-        name: "regular",
-        props: {
-          label: "{{ .Label }}",
-        },
-      },
-      {
-        name: "dark",
-        props: {
-          dark: true,
-          label: "{{ .Label }}",
-        },
-      },
-    ],
-  },
-  {
-    name: "header",
-    path: "parts/Header/Header",
-    variants: [
-      {
-        name: "regular",
-        props: {
-          status: {},
-        },
-      },
-    ],
-  },
-];
+const glob = util.promisify(globCb);
 
 const removeDir = function (path) {
   if (fs.existsSync(path)) {
@@ -79,25 +36,39 @@ if (fs.existsSync(path.resolve(__dirname, "dist"))) {
 
 fs.mkdirSync(path.resolve(__dirname, "dist"));
 
-Promise.all(
-  components.map((component) => {
-    const Component = require(path.resolve(__dirname, component.path + ".jsx"));
+async function main() {
+  const stories = await glob("./*(components|parts|views)/**/*.stories.jsx");
 
-    return Promise.all(
-      component.variants.map((variant) => {
-        const markup = ReactDOMServer.renderToString(
-          <Component.default {...variant.props} />
-        );
+  console.log("rendering", stories);
 
-        return writeFile(
-          path.resolve(
-            __dirname,
-            "dist",
-            component.name + "-" + variant.name + ".html"
-          ),
-          markup
-        );
-      })
-    );
-  })
-).catch(console.error);
+  return Promise.all(
+    stories.map((story) => {
+      const component = require(path.resolve(__dirname, story));
+      const { default: options, ...variants } = component;
+
+      return Promise.all(
+        Object.keys(variants).map((variant) => {
+          const Component = variants[variant];
+          const markup = ReactDOMServer.renderToString(
+            <Component {...Object.assign({}, options.args, Component.args)} />
+          );
+          const storyPath = path.parse(story);
+
+          return writeFile(
+            path.resolve(
+              __dirname,
+              "dist",
+              storyPath.name.split(".")[0].toLowerCase() +
+                "-" +
+                variant.toLowerCase() +
+                ".html"
+            ),
+            markup
+          );
+        })
+      );
+    })
+  );
+}
+
+main().catch(console.error);

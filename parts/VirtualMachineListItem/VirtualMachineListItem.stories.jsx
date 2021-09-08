@@ -1,3 +1,4 @@
+import React from "react";
 import VirtualMachineListItem from "./VirtualMachineListItem";
 
 export default {

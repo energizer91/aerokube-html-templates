@@ -1,5 +1,5 @@
+import React from "react";
 import Header from "./Header";
-import avatar from "../../assets/avatar.png";
 
 export default {
   title: "Parts/Header",
@@ -17,7 +17,6 @@ export default {
   },
   args: {
     status: { status: "Connected", used: "50%", quota: "50 + 0 / 100" },
-    avatar,
   },
   component: Header,
 };

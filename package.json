@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs-build",
-    "build": "babel-node build.js",
+    "build": "node -r @babel/register build.js",
     "prettier": "prettier --write **/*.{js,jsx,scss}"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "css-loader": "5.2.7",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.2.0",
+    "glob": "^7.1.7",
     "sass": "^1.39.0",
     "sass-loader": "^10.2.0",
     "webpack": "^4.46.0",
