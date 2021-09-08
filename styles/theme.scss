@@ -1,6 +1,22 @@
-$mdc-theme-primary: rgb(71, 196, 129);
-$mdc-theme-on-primary: white;
-$mdc-theme-secondary: rgb(71, 196, 129);
-$mdc-theme-on-secondary: white;
-$mdc-shape-small-component-radius: 8px;
-$mdc-typography-font-family: unquote("Inter, Roboto, Helvetica, sans-serif");
+@use "~@material/theme/theme-color" with (
+  $primary: rgb(71, 196, 129),
+  $on-primary: white,
+  $secondary: rgb(71, 196, 129),
+  $on-secondary: white
+);
+
+@use "~@material/typography" with (
+  $font-family: unquote("Inter, Roboto, Helvetica, sans-serif"),
+  $styles-button: (
+        font-weight: 600,
+        text-transform: initial,
+        letter-spacing: 0.5px,
+  )
+);
+
+@use "~@material/shape" with (
+  $small-component-radius: 8px
+);
+
+$dark-icon-color: rgba(0, 0, 0, 0.6);
+$border-color: rgb(192, 192, 192);

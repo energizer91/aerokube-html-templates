@@ -1,15 +1,6 @@
+@use "../theme" as aerokube-theme;
+@use "~@material/theme";
 @use "~@material/animation";
-@use "~@material/theme" with (
-  $primary: $mdc-theme-primary,
-  $on-primary: $mdc-theme-on-primary,
-);
-@use "~@material/typography" with (
-  $styles-button: (
-        font-weight: 600,
-        text-transform: initial,
-        letter-spacing: 0.5px,
-  )
-);
 @use "~@material/button/button-shared-theme" with (
   $height: 40px,
   $horizontal-padding: 16px,
@@ -27,8 +18,8 @@
     @include mixins.height(32px);
     @include mixins.icon-color(
       (
-        default: rgba(0, 0, 0, 0.6),
-        hover: $mdc-theme-primary,
+        default: aerokube-theme.$dark-icon-color,
+        hover: theme.$primary,
       )
     );
     min-width: 32px;

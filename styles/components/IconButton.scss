@@ -1,3 +1,7 @@
+@use "../theme" as aerokube-theme;
+@use "~@material/theme";
+@use "~@material/animation";
+
 .icon-button {
   display: inline-block;
   font-size: 20px;
@@ -6,5 +10,14 @@
   appearance: none;
   outline: none;
   cursor: pointer;
-  color: red;
+  vertical-align: middle;
+  line-height: 16px;
+
+  color: aerokube-theme.$dark-icon-color;
+
+  &:hover {
+    color: theme.$primary;
+  }
+
+  transition: animation.standard(color, 150ms);
 }

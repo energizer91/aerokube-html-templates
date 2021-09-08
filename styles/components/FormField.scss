@@ -1,0 +1,34 @@
+@use "../theme" as aerokube-theme;
+@use "~@material/form-field";
+@use "~@material/theme";
+@use "~@material/animation";
+@use "~@material/typography";
+@use "~@material/shape";
+@use '~@material/button/button-outlined';
+@use "~@material/button/mixins";
+
+@include form-field.core-styles;
+
+.mdc-form-field {
+  & > label {
+    cursor: pointer;
+    font-family: typography.$font-family;
+    letter-spacing: 0.1px;
+    color: aerokube-theme.$dark-icon-color;
+    font-weight: 500;
+    transition: animation.standard(color, 150ms);
+  }
+
+  & .mdc-switch {
+    &--selected + label {
+      color: theme.$primary;
+    }
+  }
+
+  &--outlined {
+    @include button-outlined.outlined;
+    @include mixins.height(32px);
+    box-sizing: border-box;
+    padding: 0 16px;
+  }
+}

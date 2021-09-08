@@ -1,0 +1,26 @@
+@use "~@material/chips/styles";
+@use "~@material/shape";
+@use "~@material/chips";
+
+.mdc-evolution-chip {
+  border-radius: shape.$small-component-radius;
+
+  &__action {
+    cursor: initial;
+  }
+
+  &--color--success {
+    @include chips.text-label-color(#388e3c);
+    @include chips.container-color(#c8e6c9);
+  }
+
+  &--color--warning {
+    @include chips.container-color(#ffccbc);
+    @include chips.text-label-color(#e64a19);
+  }
+
+  &--color--info {
+    @include chips.container-color(#b2ebf2);
+    @include chips.text-label-color(#0097a7);
+  }
+}

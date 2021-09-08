@@ -27,7 +27,7 @@ const Checkbox = ({
 
   return (
     <>
-      <div ref={field} className="mdc-form-field mdc-theme--primary-bg">
+      <div ref={field} className="mdc-form-field">
         <div ref={ref} className={root()}>
           <input
             type="checkbox"

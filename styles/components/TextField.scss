@@ -1,15 +1,20 @@
+@use "../theme" as aerokube-theme;
+
 $mdc-text-field-height: 40px;
 $mdc-text-field-leading-icon-padding-left: 0px !default;
 $mdc-text-field-leading-icon-padding-right: 20px !default;
 $mdc-text-field-helper-line-padding: 0 !default;
-$mdc-text-field-outlined-idle-border: rgb(192, 192, 192) !default;
-$mdc-text-field-outlined-hover-border: rgba(0, 0, 0, 0.6) !default;
+$mdc-text-field-outlined-idle-border: aerokube-theme.$border-color !default;
+$mdc-text-field-outlined-hover-border: aerokube-theme.$dark-icon-color !default;
 
 @use "~@material/animation";
+@use "~@material/shape";
 @use '~@material/theme/theme';
 
-@import "../theme";
 @import "~@material/textfield/mdc-text-field";
+
+$dark-ink-color: rgba(255, 255, 255, 0.74);
+$dark-background-color: rgb(51, 51, 51);
 
 .mdc-text-field__label {
   color: GrayText;
@@ -20,25 +25,26 @@ $mdc-text-field-outlined-hover-border: rgba(0, 0, 0, 0.6) !default;
 .mdc-text-field {
   & &__input,
   & &__icon {
-    transition: color 175ms animation.$standard-curve-timing-function,
-      background-color 175ms animation.$standard-curve-timing-function;
+    transition: animation.standard(color, 150ms),
+      animation.standard(background-color, 150ms);
   }
 
   & .mdc-notched-outline {
     &__leading,
     &__trailing {
-      transition: border-color 175ms animation.$standard-curve-timing-function;
+      transition: animation.standard(border-color, 150ms);
     }
   }
 
   &--dark {
-    @include mdc-text-field-ink-color(rgba(255, 255, 255, 0.74));
-    @include mdc-text-field-placeholder-color(rgba(255, 255, 255, 0.74));
-    @include mdc-text-field-leading-icon-color(rgba(255, 255, 255, 0.74));
-    @include mdc-text-field-outline-color(rgb(51, 51, 51));
+    @include mdc-text-field-ink-color($dark-ink-color);
+    @include mdc-text-field-placeholder-color($dark-ink-color);
+    @include mdc-text-field-leading-icon-color($dark-ink-color);
+    @include mdc-text-field-outline-color($dark-background-color);
     @include mdc-text-field-hover-outline-color(white);
-    background-color: rgb(51, 51, 51);
-    border-radius: $mdc-shape-small-component-radius;
+
+    background-color: $dark-background-color;
+    border-radius: shape.$small-component-radius;
 
     &.mdc-text-field--focused {
       @include mdc-text-field-ink-color(white);

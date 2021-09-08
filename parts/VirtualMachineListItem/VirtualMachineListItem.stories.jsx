@@ -10,7 +10,21 @@ export default {
     },
   },
   args: {
-    children: "Label",
+    virtualMachine: {
+      name: "Working VM",
+      ipAddress: "387.987.150.150",
+      config: ["2 VCPU", "4GB RAM"],
+      labels: [
+        {
+          caption: "Tag name",
+          color: "warning",
+        },
+        {
+          caption: "Another Tag Name",
+          color: "success",
+        },
+      ],
+    },
   },
   component: VirtualMachineListItem,
 };

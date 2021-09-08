@@ -7,10 +7,12 @@ const Switch = ({
   id = "switch",
   checked = false,
   name = "switch",
+  outlined = false,
   caption,
   onClick,
 }) => {
   const root = cn("switch");
+  const fieldRoot = cn("form-field");
   const ref = React.useRef(null);
   const field = React.useRef(null);
 
@@ -25,7 +27,7 @@ const Switch = ({
   });
 
   return (
-    <div ref={field} className="mdc-form-field">
+    <div ref={field} className={fieldRoot({ outlined })}>
       <button
         ref={ref}
         id={id}
