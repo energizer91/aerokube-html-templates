@@ -14,6 +14,7 @@ const TextField = ({
   onChange,
   textarea = false,
   className = "",
+  rootClassName = "",
 }) => {
   const root = cn("text-field");
   const outline = cn("notched-outline");
@@ -30,7 +31,7 @@ const TextField = ({
   }, [ref, field]);
 
   return (
-    <div ref={field}>
+    <div ref={field} className={rootClassName}>
       {label && (
         <div className={root("label")}>
           <label htmlFor={id}>{label}</label>
@@ -61,7 +62,7 @@ const TextField = ({
             className={root("input")}
             id={id}
             onChange={onChange}
-            value={value}
+            defaultValue={value}
             placeholder={placeholder}
           />
         ) : (
@@ -70,7 +71,7 @@ const TextField = ({
             type="text"
             id={id}
             onChange={onChange}
-            value={value}
+            defaultValue={value}
             placeholder={placeholder}
           />
         )}

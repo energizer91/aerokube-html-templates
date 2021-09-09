@@ -34,7 +34,7 @@ const Checkbox = ({
             className={root("native-control", [""])}
             id={id}
             name={name}
-            checked={checked}
+            defaultChecked={checked}
             onChange={onChange}
           />
           <div className={root("background")}>

@@ -8,7 +8,7 @@ const VirtualMachineListItem = ({ virtualMachine = {} }) => {
   return (
     <div className="virtual-machine-list-item mdc-elevation--z2 d-flex align-items-center justify-content-between">
       <div className="d-flex align-items-center">
-        <Button icon="content_copy" outlined />
+        <Button icon="file_copy" outlined />
         <div className="virtual-machine-list-item__name-container">
           <p className="virtual-machine-list-item__name">
             {virtualMachine.name}

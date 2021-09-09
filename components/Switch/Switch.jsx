@@ -10,6 +10,7 @@ const Switch = ({
   outlined = false,
   caption,
   onClick,
+  disabled = false,
 }) => {
   const root = cn("switch");
   const fieldRoot = cn("form-field");
@@ -37,6 +38,7 @@ const Switch = ({
         name={name}
         aria-checked={checked}
         onClick={onClick}
+        disabled={disabled}
       >
         <div className={root("track")} />
         <div className={root("handle-track")}>
@@ -45,14 +47,6 @@ const Switch = ({
               <div className="mdc-elevation-overlay" />
             </div>
             <div className={root("ripple")} />
-            <div className={root("icons")}>
-              <svg className={root("icon", { on: true })} viewBox="0 0 24 24">
-                <path d="M19.69,5.23L8.96,15.96l-4.23-4.23L2.96,13.5l6,6L21.46,7L19.69,5.23z" />
-              </svg>
-              <svg className={root("icon", { off: true })} viewBox="0 0 24 24">
-                <path d="M20 13H4v-2h16v2z" />
-              </svg>
-            </div>
           </div>
         </div>
       </button>

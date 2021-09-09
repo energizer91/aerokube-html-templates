@@ -13,7 +13,6 @@
 @use "~@material/animation";
 @use "~@material/shape";
 @use '~@material/theme/theme';
-
 @use "~@material/floating-label/mdc-floating-label";
 @use "~@material/line-ripple/mdc-line-ripple";
 @use "~@material/notched-outline/mdc-notched-outline";
@@ -29,6 +28,7 @@ $dark-background-color: rgb(51, 51, 51);
   &__label {
     color: GrayText;
     font-size: 12px;
+    line-height: 16px;
     margin-bottom: 4px;
   }
 
@@ -57,7 +57,6 @@ $dark-background-color: rgb(51, 51, 51);
 
     &.mdc-text-field--focused {
       @include textfield.ink-color(white);
-      @include textfield.placeholder-color(white);
       @include icon-mixins.leading-icon-color(white);
     }
   }

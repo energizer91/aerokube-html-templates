@@ -25,7 +25,7 @@ const TextField = ({
   }, [ref]);
 
   return (
-    <>
+    <div>
       {label && (
         <div className={root("label")}>
           <label htmlFor={id}>{label}</label>
@@ -92,7 +92,7 @@ const TextField = ({
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

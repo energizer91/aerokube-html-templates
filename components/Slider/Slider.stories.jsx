@@ -24,9 +24,9 @@ export default {
     },
   },
   args: {
-    min: 0,
-    max: 100,
-    value: 42,
+    min: 1,
+    max: 4,
+    value: 2,
   },
   component: Slider,
 };

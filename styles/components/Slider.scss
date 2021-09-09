@@ -1,0 +1,38 @@
+@use "../theme" as aerokube-theme;
+@use "~@material/shape";
+@use "~@material/theme";
+@import "~@material/slider/styles";
+
+.mdc-slider {
+  margin: 0;
+
+  &__label,
+  &__ruler {
+    font-size: 12px;
+    line-height: 16px;
+    color: aerokube-theme.$dark-icon-color;
+    letter-spacing: 0.4px;
+  }
+
+  &__label {
+    margin-bottom: 8px;
+  }
+
+  &__wrapper {
+    background-color: #f5f5f5;
+    border-radius: shape.$small-component-radius;
+    padding: 12px;
+  }
+
+  &__rulers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__ruler {
+    &--selected {
+      color: theme.$primary;
+    }
+  }
+}

@@ -4,8 +4,25 @@
 @include dialog.core-styles;
 
 .mdc-dialog {
+  &.mdc-dialog--scrollable {
+    & .mdc-dialog__title {
+      border: none;
+      padding-bottom: 0;
+    }
+
+    & .mdc-dialog__actions {
+      border: none;
+    }
+  }
+
   &__title-wrapper {
     padding: 24px 24px 0;
+  }
+
+  &__content {
+    & > div:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__title {

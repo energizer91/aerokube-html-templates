@@ -27,6 +27,9 @@
     & .mdc-button__icon {
       transition: animation.standard(color, 150ms);
       margin: 0;
+      height: 24px;
+      width: 24px;
+      font-size: 24px;
     }
   }
 }

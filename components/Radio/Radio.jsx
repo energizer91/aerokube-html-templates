@@ -33,7 +33,7 @@ const Radio = ({
           type="radio"
           id={id}
           name={name}
-          checked={checked}
+          defaultChecked={checked}
           onChange={onChange}
         />
         <div className={root("background")}>

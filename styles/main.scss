@@ -1,5 +1,6 @@
 @use "./theme";
 @use '~@material/typography';
+@use "~@material/theme/theme-color";
 @import "./bootstrap-grid.min.css";
 @import "./components/Button";
 @import "./components/TextField";
@@ -9,13 +10,13 @@
 @import "./components/ChipSet";
 @import "./components/Snackbar";
 @import "./components/Dialog";
+@import "./components/Slider";
 @import "./parts/VirtualMachineListItem";
 
 @import "~@material/elevation/mdc-elevation";
 @import "~@material/checkbox/mdc-checkbox";
 @import "~@material/radio/mdc-radio";
 @import "~@material/switch/styles";
-@import "~@material/slider/styles";
 @import "~@material/tab/mdc-tab";
 @import "~@material/tab-bar/mdc-tab-bar";
 @import "~@material/tab-scroller/mdc-tab-scroller";
@@ -75,10 +76,56 @@ body {
   opacity: 0.74;
 }
 
+.header__status-info {
+  vertical-align: middle;
+}
+
 .w-100 {
   width: 100%;
 }
 
 .mb-24 {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.mdc-status-icon {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  line-height: 12px;
+  border-radius: 6px;
+  margin-right: 8px;
+  margin-bottom: -1px;
+
+  &--status--Connected {
+    background-color: theme-color.$primary;
+  }
+}
+
+.vm-dialog {
+  & > div {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__source {
+    margin-left: -10px;
+  }
+
+  &__machine {
+    display: flex;
+    justify-content: space-around;
+
+    & > div {
+      flex-grow: 1;
+      margin-left: 24px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
 }

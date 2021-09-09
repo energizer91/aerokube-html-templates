@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import IconButton from "../IconButton/IconButton";
 import { MDCDialog } from "@material/dialog";
 
-const Dialog = ({ children, title, actionText, onAction }) => {
+const Dialog = ({ children, title, actionText, onAction, className }) => {
   const root = cn("dialog");
   const ref = React.useRef(null);
   const [dialog, setDialog] = React.useState(null);
@@ -42,7 +42,10 @@ const Dialog = ({ children, title, actionText, onAction }) => {
             </h2>
             <IconButton onClick={onDialogClose}>close</IconButton>
           </div>
-          <div className={root("content")} id="my-dialog-content">
+          <div
+            className={root("content", className.split(" "))}
+            id="my-dialog-content"
+          >
             {children}
           </div>
           <div className={root("actions")}>

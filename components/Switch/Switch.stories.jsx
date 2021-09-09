@@ -19,6 +19,11 @@ export default {
         type: "boolean",
       },
     },
+    disabled: {
+      controls: {
+        type: "boolean",
+      },
+    },
     caption: {
       controls: {
         type: "text",
@@ -39,6 +44,7 @@ export default {
     checked: true,
     caption: "Check",
     outlined: false,
+    disabled: false,
   },
   component: Switch,
 };
@@ -48,4 +54,8 @@ export const Default = (props) => <Switch {...props} />;
 export const Outlined = Default.bind({});
 Outlined.args = {
   outlined: true,
+};
+export const Disabled = Default.bind({});
+Disabled.args = {
+  disabled: true,
 };
